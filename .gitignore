@@ -2,6 +2,9 @@
 azure-devops-runner-config.json
 vsts-runner-config.json
 
+# output
+tmp
+
 # Editors
 .vscode/
 

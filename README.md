@@ -27,11 +27,13 @@ Now you can run `runner.py` with no arguments to see available options.
 1. Get a [personal access token](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops).
 
 2. Store the PAT and organization URL you'll be running samples against (note: some samples are destructive, so use a test organization):
-   * `python runner.py config url --set-to https://dev.azure.com/fabrikam`
-   * `python runner.py config pat --set-to ABC123`
+   * `python3 runner.py config url --set-to https://dev.azure.com/fabrikam`
+   * `python3 runner.py config url --set-to https://dev.azure.com/VCF-SI-DEV`
+   * `python3 runner.py config url --set-to https://dev.azure.com/VCF-SI`
+   * `python3 runner.py config pat --set-to ABC123`
    * If you don't want your PAT persisted to a file, you can put it in an environment variable called `AZURE_DEVOPS_PAT` instead
 
-3. Run `python runner.py run {area} {resource}` with the 2 required arguments:
+3. Run `python3 runner.py run {area} {resource}` with the 2 required arguments:
    * `{area}`: API area (currently `core`, `git`, and `work_item_tracking`) to run the client samples for. Use `all` to include all areas.
    * `{resource}`: API resource to run the client samples for. Use `all` to include all resources.
    * You can optionally pass `--url {url}` to override your configured URL
@@ -41,25 +43,25 @@ Now you can run `runner.py` with no arguments to see available options.
 #### Run all samples
 
 ```
-python runner.py run all all
+python3 runner.py run all all
 ```
 
 #### Run all work item tracking samples
 
 ```
-python runner.py run work_item_tracking all
+python3 runner.py run work_item_tracking all --output-path /tf/caf/azure-devops-python-samples/tmp
 ```
 
 #### Run all Git pull request samples
 
 ```
-python runner.py run git pullrequests
+python3 runner.py run git pullrequests
 ```
 
 #### Run all Git samples against a different URL than the one configured; in this case, a TFS on-premises collection
 
 ```
-python runner.py run git all --url https://mytfs:8080/tfs/testcollection
+python3 runner.py run git all --url https://mytfs:8080/tfs/testcollection
 ```
 
 ### Save request and response data to a JSON file
@@ -67,7 +69,7 @@ python runner.py run git all --url https://mytfs:8080/tfs/testcollection
 To persist the HTTP request/response as JSON for each client sample method that is run, set the `--output-path {value}` argument. For example:
 
 ```
-python runner.py run all all --output-path ~/temp/http-output
+python3 runner.py run all all --output-path ~/temp/http-output
 ```
 
 This creates a folder for each area, a folder for each resource under the area folder, and a file for each client sample method that was run. The name of the JSON file is determined by the name of the client sample method. For example:
